@@ -32,7 +32,7 @@ class CustomListOfOrderPrices extends StatelessWidget {
                   child:  Text(arrivalModel[index].name, style: const TextStyle(fontSize: 16 ,color: AppColors.grey))),
               Container(
                   padding: const EdgeInsets.symmetric(horizontal: 20),
-                  child: Text(arrivalModel[index].price, style: const TextStyle(fontSize: 18,  fontWeight: FontWeight.bold,
+                  child: Text(arrivalModel[index].price.toString(), style: const TextStyle(fontSize: 18,  fontWeight: FontWeight.bold,
                       color: AppColors.black))),
             ],
           );

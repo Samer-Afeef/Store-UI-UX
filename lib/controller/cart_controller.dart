@@ -5,25 +5,24 @@ import '../views/checkout_view.dart';
 
 class CartController extends ChangeNotifier{
   List<ArrivalsModel> arrivalModel = [
-    const ArrivalsModel(categoryName: "Men's Clothes", price: "45.00",name: 'Denim Jacket',isFavorite: false),
-    const ArrivalsModel(categoryName: "Denim Shirt", price: "45.00",name: 'Denim Jacket',isFavorite: true),
-    const ArrivalsModel(categoryName: "Men's Clothes", price: "74.00",name: 'Blazer Jacket',isFavorite: true),
+     ArrivalsModel(categoryName: "Men's Clothes", price: 45.00,name: 'Denim Jacket',isFavorite: false,count: 1),
+     ArrivalsModel(categoryName: "Denim Shirt", price: 45.00,name: 'Denim Jacket',isFavorite: true,count: 1),
+     ArrivalsModel(categoryName: "Men's Clothes", price: 74.00,name: 'Blazer Jacket',isFavorite: true,count: 1),
   ];
   String total ="\$65.59";
   String deliveryCharge ="\$2.60";
 
-  int _count = 1;
-  get count => _count;
-
-  void increment(){
-    _count ++;
+  void increment(int index){
+    arrivalModel[index].count = (arrivalModel[index].count! +1) ;
+    arrivalModel[index].price = (arrivalModel[index].price! ) + arrivalModel[index].price!;
     notifyListeners();
   }
 
-  void decrease(){
-    if(_count>1)
+  void decrease(int index){
+    if(arrivalModel[index].count != 1)
     {
-      _count--;
+      arrivalModel[index].count =  (arrivalModel[index].count! -1);
+      arrivalModel[index].price = arrivalModel[index].price!  / 2;
       notifyListeners();
     }
   }

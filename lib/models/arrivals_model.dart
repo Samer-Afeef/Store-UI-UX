@@ -3,10 +3,11 @@
 class ArrivalsModel{
 
   final String name;
+   int? count =1;
   final String categoryName;
-  final String price;
+  double?  price;
   final  bool isFavorite;
 
 
-  const ArrivalsModel({required this.categoryName, required this.price, required this.name,required this.isFavorite});
+ ArrivalsModel({this.count,required this.categoryName, required this.price, required this.name,required this.isFavorite});
 }

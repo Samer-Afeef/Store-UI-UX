@@ -27,10 +27,14 @@ class _CartViewState extends State<CartView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: const Text("Cart"),
+        centerTitle: true,
+      ),
       body: ListView(
         children: [
           Container(
-            margin: const EdgeInsets.all(8.0),
+            margin: const EdgeInsets.symmetric(horizontal: 8.0),
             child: ListView.builder(
               shrinkWrap: true,
               physics: const NeverScrollableScrollPhysics(),
@@ -105,7 +109,7 @@ class _CartViewState extends State<CartView> {
                                   textColor: AppColors.grey,
                                   elevation: 0.0,
                                   onPressed: () {
-                                    _controller.increment();
+                                    _controller.increment(index);
                                   },
                                   child: const Text("+",
                                       style: TextStyle(
@@ -118,7 +122,7 @@ class _CartViewState extends State<CartView> {
                                 padding:
                                     const EdgeInsets.symmetric(horizontal: 5.0),
                                 child: Text(
-                                  " ${_controller.count} ",
+                                  " ${_controller.arrivalModel[index].count} ",
                                   style: const TextStyle(
                                       color: AppColors.black,
                                       fontWeight: FontWeight.bold),
@@ -138,7 +142,7 @@ class _CartViewState extends State<CartView> {
                                   shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(2.0)),
                                   onPressed: () {
-                                    _controller.decrease();
+                                    _controller.decrease(index);
                                   },
                                   child: const Text("-",
                                       style: TextStyle(
@@ -158,11 +162,11 @@ class _CartViewState extends State<CartView> {
           CustomListOfOrderPrices(arrivalModel: _controller.arrivalModel),
           CustomCardDeliveryCharge(
               arrivalModel: _controller.arrivalModel,
-              deliveryCharge: _controller.deliveryCharge),
+              deliveryCharge: _controller.deliveryCharge.toString()),
           const Padding(
               padding: EdgeInsets.symmetric(horizontal: 20), child: Divider()),
           CustomCardOrderTotal(
-              arrivalModel: _controller.arrivalModel, total: _controller.total),
+              arrivalModel: _controller.arrivalModel, total: "${_controller.total}"),
         ],
       ),
       bottomNavigationBar: CustomButton(

@@ -27,11 +27,44 @@ class _HomeViewState extends State<HomeView> {
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
-    return Padding(
-      padding: const EdgeInsets.symmetric(
-        horizontal: 8.0,
+    return Scaffold(
+      appBar: AppBar(
+        leading: GestureDetector(
+            onTap: () {
+              _controller.openDrawer();
+            },
+            child: const Icon(
+              Icons.menu,
+              color: AppColors.grey,
+            )),
+        centerTitle: true,
+        title: const Text(
+          "Home",
+          style: TextStyle(color: AppColors.black),
+        ),
+        actions: [
+          IconButton(
+            onPressed: () {},
+            icon: const Icon(
+              Icons.search_rounded,
+              size: 28,
+              color: AppColors.grey,
+            ),
+          ),
+          const SizedBox(
+            width: 8.0,
+          ),
+          IconButton(
+            onPressed: () {},
+            icon: const Icon(
+              Icons.shopping_bag_outlined,
+              size: 28,
+              color: AppColors.grey,
+            ),
+          )
+        ],
       ),
-      child: ListView(
+      body: ListView(
         children: [
           AspectRatio(
             aspectRatio: 16 / 9,

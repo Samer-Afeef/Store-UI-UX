@@ -29,42 +29,7 @@ class _HomeDashBoardState extends State<HomeDashBoard> {
     return Scaffold(
       key: _boardController.scaffoldKey,
       drawer: const CustomDrawer(),
-      appBar: AppBar(
-        leading: GestureDetector(
-            onTap: () {
-              _boardController.openDrawer();
-            },
-            child: const Icon(
-              Icons.menu,
-              color: AppColors.grey,
-            )),
-        centerTitle: true,
-        title: const Text(
-          "Home",
-          style: TextStyle(color: AppColors.black),
-        ),
-        actions: [
-          IconButton(
-            onPressed: () {},
-            icon: const Icon(
-              Icons.search_rounded,
-              size: 28,
-              color: AppColors.grey,
-            ),
-          ),
-          const SizedBox(
-            width: 8.0,
-          ),
-          IconButton(
-            onPressed: () {},
-            icon: const Icon(
-              Icons.shopping_bag_outlined,
-              size: 28,
-              color: AppColors.grey,
-            ),
-          )
-        ],
-      ),
+
       body: IndexedStack(index: _boardController.currentTap, children:_boardController.listPages),
       bottomNavigationBar: BottomAppBar(
         elevation: 0.0,
